@@ -1,0 +1,503 @@
+Text file: styles.css
+Reading lines: 1-500 (file has 656 lines)
+Latest content with line numbers:
+1	/* Reset e configurações básicas */
+2	* {
+3	    margin: 0;
+4	    padding: 0;
+5	    box-sizing: border-box;
+6	}
+7	
+8	body {
+9	    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+10	    background-color: #f5f7fa;
+11	    color: #333;
+12	    line-height: 1.6;
+13	}
+14	
+15	.container {
+16	    max-width: 1200px;
+17	    margin: 0 auto;
+18	    padding: 0 20px;
+19	}
+20	
+21	/* Header */
+22	.header {
+23	    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+24	    color: white;
+25	    padding: 1rem 0;
+26	    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+27	}
+28	
+29	.header .container {
+30	    display: flex;
+31	    justify-content: space-between;
+32	    align-items: center;
+33	    flex-wrap: wrap;
+34	}
+35	
+36	.logo {
+37	    font-size: 1.8rem;
+38	    font-weight: bold;
+39	    display: flex;
+40	    align-items: center;
+41	    gap: 0.5rem;
+42	}
+43	
+44	.logo i {
+45	    font-size: 2rem;
+46	}
+47	
+48	.nav {
+49	    display: flex;
+50	    gap: 0.5rem;
+51	    flex-wrap: wrap;
+52	}
+53	
+54	.nav-btn {
+55	    background: rgba(255,255,255,0.1);
+56	    border: none;
+57	    color: white;
+58	    padding: 0.75rem 1.5rem;
+59	    border-radius: 8px;
+60	    cursor: pointer;
+61	    transition: all 0.3s ease;
+62	    display: flex;
+63	    align-items: center;
+64	    gap: 0.5rem;
+65	    font-size: 0.9rem;
+66	}
+67	
+68	.nav-btn:hover {
+69	    background: rgba(255,255,255,0.2);
+70	    transform: translateY(-2px);
+71	}
+72	
+73	.nav-btn.active {
+74	    background: rgba(255,255,255,0.3);
+75	    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+76	}
+77	
+78	/* Container principal */
+79	.main-container {
+80	    padding: 2rem 0;
+81	    min-height: calc(100vh - 80px);
+82	}
+83	
+84	/* Seções */
+85	.section {
+86	    display: none;
+87	}
+88	
+89	.section.active {
+90	    display: block;
+91	}
+92	
+93	.section-title {
+94	    font-size: 2rem;
+95	    margin-bottom: 2rem;
+96	    color: #2d3748;
+97	    text-align: center;
+98	}
+99	
+100	.section-header {
+101	    display: flex;
+102	    justify-content: space-between;
+103	    align-items: center;
+104	    margin-bottom: 2rem;
+105	    flex-wrap: wrap;
+106	    gap: 1rem;
+107	}
+108	
+109	/* Cards de resumo */
+110	.summary-cards {
+111	    display: grid;
+112	    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+113	    gap: 1.5rem;
+114	    margin-bottom: 3rem;
+115	}
+116	
+117	.card {
+118	    background: white;
+119	    border-radius: 12px;
+120	    padding: 1.5rem;
+121	    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+122	    display: flex;
+123	    align-items: center;
+124	    gap: 1rem;
+125	    transition: transform 0.3s ease, box-shadow 0.3s ease;
+126	}
+127	
+128	.card:hover {
+129	    transform: translateY(-5px);
+130	    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+131	}
+132	
+133	.card-icon {
+134	    width: 60px;
+135	    height: 60px;
+136	    border-radius: 50%;
+137	    display: flex;
+138	    align-items: center;
+139	    justify-content: center;
+140	    font-size: 1.5rem;
+141	    color: white;
+142	}
+143	
+144	.income-card .card-icon {
+145	    background: linear-gradient(135deg, #4CAF50, #45a049);
+146	}
+147	
+148	.expense-card .card-icon {
+149	    background: linear-gradient(135deg, #f44336, #d32f2f);
+150	}
+151	
+152	.balance-card .card-icon {
+153	    background: linear-gradient(135deg, #2196F3, #1976D2);
+154	}
+155	
+156	.card-content h3 {
+157	    font-size: 1rem;
+158	    color: #666;
+159	    margin-bottom: 0.5rem;
+160	}
+161	
+162	.amount {
+163	    font-size: 1.8rem;
+164	    font-weight: bold;
+165	    color: #2d3748;
+166	}
+167	
+168	/* Gráficos */
+169	.charts-container {
+170	    display: grid;
+171	    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+172	    gap: 2rem;
+173	    margin-bottom: 3rem;
+174	}
+175	
+176	.chart-card {
+177	    background: white;
+178	    border-radius: 12px;
+179	    padding: 1.5rem;
+180	    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+181	}
+182	
+183	.chart-card h3 {
+184	    margin-bottom: 1rem;
+185	    color: #2d3748;
+186	    text-align: center;
+187	}
+188	
+189	/* Botões */
+190	.btn {
+191	    padding: 0.75rem 1.5rem;
+192	    border: none;
+193	    border-radius: 8px;
+194	    cursor: pointer;
+195	    font-size: 0.9rem;
+196	    font-weight: 500;
+197	    transition: all 0.3s ease;
+198	    display: inline-flex;
+199	    align-items: center;
+200	    gap: 0.5rem;
+201	    text-decoration: none;
+202	}
+203	
+204	.btn-primary {
+205	    background: linear-gradient(135deg, #667eea, #764ba2);
+206	    color: white;
+207	}
+208	
+209	.btn-primary:hover {
+210	    transform: translateY(-2px);
+211	    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+212	}
+213	
+214	.btn-secondary {
+215	    background: #e2e8f0;
+216	    color: #4a5568;
+217	}
+218	
+219	.btn-secondary:hover {
+220	    background: #cbd5e0;
+221	    transform: translateY(-2px);
+222	}
+223	
+224	/* Filtros */
+225	.filters {
+226	    background: white;
+227	    padding: 1.5rem;
+228	    border-radius: 12px;
+229	    margin-bottom: 2rem;
+230	    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+231	    display: flex;
+232	    gap: 1rem;
+233	    flex-wrap: wrap;
+234	    align-items: center;
+235	}
+236	
+237	.filter-select,
+238	.filter-input {
+239	    padding: 0.75rem;
+240	    border: 2px solid #e2e8f0;
+241	    border-radius: 8px;
+242	    font-size: 0.9rem;
+243	    transition: border-color 0.3s ease;
+244	    min-width: 150px;
+245	}
+246	
+247	.filter-select:focus,
+248	.filter-input:focus {
+249	    outline: none;
+250	    border-color: #667eea;
+251	    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+252	}
+253	
+254	/* Lista de transações */
+255	.transactions-list {
+256	    background: white;
+257	    border-radius: 12px;
+258	    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+259	    overflow: hidden;
+260	}
+261	
+262	.transaction-item {
+263	    padding: 1.5rem;
+264	    border-bottom: 1px solid #e2e8f0;
+265	    display: flex;
+266	    justify-content: space-between;
+267	    align-items: center;
+268	    transition: background-color 0.3s ease;
+269	}
+270	
+271	.transaction-item:hover {
+272	    background-color: #f8fafc;
+273	}
+274	
+275	.transaction-item:last-child {
+276	    border-bottom: none;
+277	}
+278	
+279	.transaction-info {
+280	    flex: 1;
+281	}
+282	
+283	.transaction-description {
+284	    font-weight: 600;
+285	    color: #2d3748;
+286	    margin-bottom: 0.25rem;
+287	}
+288	
+289	.transaction-meta {
+290	    font-size: 0.85rem;
+291	    color: #718096;
+292	}
+293	
+294	.transaction-amount {
+295	    font-size: 1.2rem;
+296	    font-weight: bold;
+297	    padding: 0.5rem 1rem;
+298	    border-radius: 6px;
+299	}
+300	
+301	.transaction-amount.income {
+302	    color: #38a169;
+303	    background: #f0fff4;
+304	}
+305	
+306	.transaction-amount.expense {
+307	    color: #e53e3e;
+308	    background: #fff5f5;
+309	}
+310	
+311	.transaction-actions {
+312	    display: flex;
+313	    gap: 0.5rem;
+314	}
+315	
+316	.action-btn {
+317	    padding: 0.5rem;
+318	    border: none;
+319	    border-radius: 6px;
+320	    cursor: pointer;
+321	    transition: all 0.3s ease;
+322	    color: #718096;
+323	}
+324	
+325	.action-btn:hover {
+326	    background: #e2e8f0;
+327	    transform: scale(1.1);
+328	}
+329	
+330	/* Grid de categorias */
+331	.categories-grid {
+332	    display: grid;
+333	    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+334	    gap: 1.5rem;
+335	}
+336	
+337	.category-item {
+338	    background: white;
+339	    border-radius: 12px;
+340	    padding: 1.5rem;
+341	    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+342	    transition: transform 0.3s ease;
+343	    text-align: center;
+344	}
+345	
+346	.category-item:hover {
+347	    transform: translateY(-5px);
+348	}
+349	
+350	.category-icon {
+351	    width: 50px;
+352	    height: 50px;
+353	    border-radius: 50%;
+354	    display: flex;
+355	    align-items: center;
+356	    justify-content: center;
+357	    margin: 0 auto 1rem;
+358	    font-size: 1.5rem;
+359	    color: white;
+360	}
+361	
+362	.category-icon.income {
+363	    background: linear-gradient(135deg, #4CAF50, #45a049);
+364	}
+365	
+366	.category-icon.expense {
+367	    background: linear-gradient(135deg, #f44336, #d32f2f);
+368	}
+369	
+370	.category-name {
+371	    font-weight: 600;
+372	    color: #2d3748;
+373	    margin-bottom: 0.5rem;
+374	}
+375	
+376	.category-type {
+377	    font-size: 0.85rem;
+378	    color: #718096;
+379	    text-transform: uppercase;
+380	    letter-spacing: 0.5px;
+381	}
+382	
+383	/* Controles de relatório */
+384	.report-controls {
+385	    background: white;
+386	    padding: 1.5rem;
+387	    border-radius: 12px;
+388	    margin-bottom: 2rem;
+389	    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+390	    display: flex;
+391	    gap: 1rem;
+392	    flex-wrap: wrap;
+393	    align-items: center;
+394	}
+395	
+396	.report-content {
+397	    background: white;
+398	    border-radius: 12px;
+399	    padding: 2rem;
+400	    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+401	    min-height: 300px;
+402	}
+403	
+404	/* Modais */
+405	.modal {
+406	    display: none;
+407	    position: fixed;
+408	    top: 0;
+409	    left: 0;
+410	    width: 100%;
+411	    height: 100%;
+412	    background: rgba(0,0,0,0.5);
+413	    z-index: 1000;
+414	    backdrop-filter: blur(5px);
+415	}
+416	
+417	.modal.active {
+418	    display: flex;
+419	    align-items: center;
+420	    justify-content: center;
+421	}
+422	
+423	.modal-content {
+424	    background: white;
+425	    border-radius: 12px;
+426	    width: 90%;
+427	    max-width: 500px;
+428	    max-height: 90vh;
+429	    overflow-y: auto;
+430	    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+431	    animation: modalSlideIn 0.3s ease;
+432	}
+433	
+434	@keyframes modalSlideIn {
+435	    from {
+436	        opacity: 0;
+437	        transform: translateY(-50px) scale(0.9);
+438	    }
+439	    to {
+440	        opacity: 1;
+441	        transform: translateY(0) scale(1);
+442	    }
+443	}
+444	
+445	.modal-header {
+446	    padding: 1.5rem;
+447	    border-bottom: 1px solid #e2e8f0;
+448	    display: flex;
+449	    justify-content: space-between;
+450	    align-items: center;
+451	}
+452	
+453	.modal-header h3 {
+454	    color: #2d3748;
+455	    font-size: 1.25rem;
+456	}
+457	
+458	.modal-close {
+459	    background: none;
+460	    border: none;
+461	    font-size: 1.5rem;
+462	    cursor: pointer;
+463	    color: #718096;
+464	    padding: 0.5rem;
+465	    border-radius: 6px;
+466	    transition: all 0.3s ease;
+467	}
+468	
+469	.modal-close:hover {
+470	    background: #e2e8f0;
+471	    color: #2d3748;
+472	}
+473	
+474	.modal-form {
+475	    padding: 1.5rem;
+476	}
+477	
+478	.form-group {
+479	    margin-bottom: 1.5rem;
+480	}
+481	
+482	.form-group label {
+483	    display: block;
+484	    margin-bottom: 0.5rem;
+485	    font-weight: 500;
+486	    color: #2d3748;
+487	}
+488	
+489	.form-group input,
+490	.form-group select {
+491	    width: 100%;
+492	    padding: 0.75rem;
+493	    border: 2px solid #e2e8f0;
+494	    border-radius: 8px;
+495	    font-size: 0.9rem;
+496	    transition: border-color 0.3s ease;
+497	}
+498	
+499	.form-group input:focus,
+500	.form-group select:focus {

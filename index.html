@@ -1,0 +1,289 @@
+Text file: index.html
+Latest content with line numbers:
+1	<!DOCTYPE html>
+2	<html lang="pt-BR">
+3	<head>
+4	    <meta charset="UTF-8">
+5	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6	    <title>SIMPLIFICA - Controle Financeiro</title>
+7	    <link rel="stylesheet" href="styles.css">
+8	    <!-- Biblioteca Chart.js para gráficos -->
+9	    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+10	    <!-- Biblioteca para ícones -->
+11	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+12	</head>
+13	<body>
+14	    <!-- Header da aplicação -->
+15	    <header class="header">
+16	        <div class="container">
+17	            <h1 class="logo">
+18	                <i class="fas fa-wallet"></i>
+19	                SIMPLIFICA
+20	            </h1>
+21	            <nav class="nav">
+22	                <button class="nav-btn active" data-section="dashboard">
+23	                    <i class="fas fa-chart-pie"></i>
+24	                    Dashboard
+25	                </button>
+26	                <button class="nav-btn" data-section="transactions">
+27	                    <i class="fas fa-exchange-alt"></i>
+28	                    Transações
+29	                </button>
+30	                <button class="nav-btn" data-section="categories">
+31	                    <i class="fas fa-tags"></i>
+32	                    Categorias
+33	                </button>
+34	                <button class="nav-btn" data-section="reports">
+35	                    <i class="fas fa-chart-line"></i>
+36	                    Relatórios
+37	                </button>
+38	            </nav>
+39	        </div>
+40	    </header>
+41	
+42	    <!-- Container principal -->
+43	    <main class="main-container">
+44	        <!-- Seção Dashboard -->
+45	        <section id="dashboard" class="section active">
+46	            <div class="container">
+47	                <h2 class="section-title">Dashboard Financeiro</h2>
+48	                
+49	                <!-- Cards de resumo -->
+50	                <div class="summary-cards">
+51	                    <div class="card income-card">
+52	                        <div class="card-icon">
+53	                            <i class="fas fa-arrow-up"></i>
+54	                        </div>
+55	                        <div class="card-content">
+56	                            <h3>Receitas do Mês</h3>
+57	                            <p class="amount" id="monthly-income">R$ 0,00</p>
+58	                        </div>
+59	                    </div>
+60	                    
+61	                    <div class="card expense-card">
+62	                        <div class="card-icon">
+63	                            <i class="fas fa-arrow-down"></i>
+64	                        </div>
+65	                        <div class="card-content">
+66	                            <h3>Despesas do Mês</h3>
+67	                            <p class="amount" id="monthly-expense">R$ 0,00</p>
+68	                        </div>
+69	                    </div>
+70	                    
+71	                    <div class="card balance-card">
+72	                        <div class="card-icon">
+73	                            <i class="fas fa-balance-scale"></i>
+74	                        </div>
+75	                        <div class="card-content">
+76	                            <h3>Saldo do Mês</h3>
+77	                            <p class="amount" id="monthly-balance">R$ 0,00</p>
+78	                        </div>
+79	                    </div>
+80	                </div>
+81	
+82	                <!-- Gráficos -->
+83	                <div class="charts-container">
+84	                    <div class="chart-card">
+85	                        <h3>Gastos por Categoria</h3>
+86	                        <canvas id="categoryChart"></canvas>
+87	                    </div>
+88	                    <div class="chart-card">
+89	                        <h3>Evolução Mensal</h3>
+90	                        <canvas id="monthlyChart"></canvas>
+91	                    </div>
+92	                </div>
+93	            </div>
+94	        </section>
+95	
+96	        <!-- Seção Transações -->
+97	        <section id="transactions" class="section">
+98	            <div class="container">
+99	                <div class="section-header">
+100	                    <h2 class="section-title">Transações</h2>
+101	                    <button class="btn btn-primary" id="add-transaction-btn">
+102	                        <i class="fas fa-plus"></i>
+103	                        Nova Transação
+104	                    </button>
+105	                </div>
+106	
+107	                <!-- Filtros -->
+108	                <div class="filters">
+109	                    <select id="filter-type" class="filter-select">
+110	                        <option value="">Todos os tipos</option>
+111	                        <option value="income">Receitas</option>
+112	                        <option value="expense">Despesas</option>
+113	                    </select>
+114	                    <select id="filter-category" class="filter-select">
+115	                        <option value="">Todas as categorias</option>
+116	                    </select>
+117	                    <input type="date" id="filter-start-date" class="filter-input">
+118	                    <input type="date" id="filter-end-date" class="filter-input">
+119	                    <button class="btn btn-secondary" id="apply-filters">Filtrar</button>
+120	                </div>
+121	
+122	                <!-- Lista de transações -->
+123	                <div class="transactions-list" id="transactions-list">
+124	                    <!-- Transações serão carregadas aqui via JavaScript -->
+125	                </div>
+126	            </div>
+127	        </section>
+128	
+129	        <!-- Seção Categorias -->
+130	        <section id="categories" class="section">
+131	            <div class="container">
+132	                <div class="section-header">
+133	                    <h2 class="section-title">Categorias</h2>
+134	                    <button class="btn btn-primary" id="add-category-btn">
+135	                        <i class="fas fa-plus"></i>
+136	                        Nova Categoria
+137	                    </button>
+138	                </div>
+139	
+140	                <!-- Lista de categorias -->
+141	                <div class="categories-grid" id="categories-grid">
+142	                    <!-- Categorias serão carregadas aqui via JavaScript -->
+143	                </div>
+144	            </div>
+145	        </section>
+146	
+147	        <!-- Seção Relatórios -->
+148	        <section id="reports" class="section">
+149	            <div class="container">
+150	                <h2 class="section-title">Relatórios</h2>
+151	                
+152	                <!-- Controles de relatório -->
+153	                <div class="report-controls">
+154	                    <select id="report-type" class="filter-select">
+155	                        <option value="monthly">Relatório Mensal</option>
+156	                        <option value="annual">Relatório Anual</option>
+157	                        <option value="category">Por Categoria</option>
+158	                    </select>
+159	                    <input type="month" id="report-month" class="filter-input">
+160	                    <input type="number" id="report-year" class="filter-input" min="2020" max="2030">
+161	                    <button class="btn btn-primary" id="generate-report">Gerar Relatório</button>
+162	                </div>
+163	
+164	                <!-- Área do relatório -->
+165	                <div class="report-content" id="report-content">
+166	                    <!-- Relatório será gerado aqui -->
+167	                </div>
+168	            </div>
+169	        </section>
+170	    </main>
+171	
+172	    <!-- Modal para adicionar/editar transação -->
+173	    <div id="transaction-modal" class="modal">
+174	        <div class="modal-content">
+175	            <div class="modal-header">
+176	                <h3 id="transaction-modal-title">Nova Transação</h3>
+177	                <button class="modal-close" id="close-transaction-modal">
+178	                    <i class="fas fa-times"></i>
+179	                </button>
+180	            </div>
+181	            <form id="transaction-form" class="modal-form">
+182	                <div class="form-group">
+183	                    <label for="transaction-type">Tipo:</label>
+184	                    <select id="transaction-type" required>
+185	                        <option value="">Selecione o tipo</option>
+186	                        <option value="income">Receita</option>
+187	                        <option value="expense">Despesa</option>
+188	                    </select>
+189	                </div>
+190	                
+191	                <div class="form-group">
+192	                    <label for="transaction-category">Categoria:</label>
+193	                    <select id="transaction-category" required>
+194	                        <option value="">Selecione a categoria</option>
+195	                    </select>
+196	                </div>
+197	                
+198	                <div class="form-group">
+199	                    <label for="transaction-description">Descrição:</label>
+200	                    <input type="text" id="transaction-description" required>
+201	                </div>
+202	                
+203	                <div class="form-group">
+204	                    <label for="transaction-amount">Valor:</label>
+205	                    <input type="number" id="transaction-amount" step="0.01" min="0" required>
+206	                </div>
+207	                
+208	                <div class="form-group">
+209	                    <label for="transaction-date">Data:</label>
+210	                    <input type="date" id="transaction-date" required>
+211	                </div>
+212	                
+213	                <div class="form-group">
+214	                    <label class="checkbox-label">
+215	                        <input type="checkbox" id="transaction-recurring">
+216	                        Transação recorrente
+217	                    </label>
+218	                </div>
+219	                
+220	                <div id="recurring-options" class="recurring-options" style="display: none;">
+221	                    <div class="form-group">
+222	                        <label for="recurring-frequency">Frequência:</label>
+223	                        <select id="recurring-frequency">
+224	                            <option value="daily">Diário</option>
+225	                            <option value="weekly">Semanal</option>
+226	                            <option value="monthly">Mensal</option>
+227	                            <option value="yearly">Anual</option>
+228	                        </select>
+229	                    </div>
+230	                    
+231	                    <div class="form-group">
+232	                        <label for="recurring-end-date">Data de término (opcional):</label>
+233	                        <input type="date" id="recurring-end-date">
+234	                    </div>
+235	                </div>
+236	                
+237	                <div class="modal-actions">
+238	                    <button type="button" class="btn btn-secondary" id="cancel-transaction">Cancelar</button>
+239	                    <button type="submit" class="btn btn-primary">Salvar</button>
+240	                </div>
+241	            </form>
+242	        </div>
+243	    </div>
+244	
+245	    <!-- Modal para adicionar/editar categoria -->
+246	    <div id="category-modal" class="modal">
+247	        <div class="modal-content">
+248	            <div class="modal-header">
+249	                <h3 id="category-modal-title">Nova Categoria</h3>
+250	                <button class="modal-close" id="close-category-modal">
+251	                    <i class="fas fa-times"></i>
+252	                </button>
+253	            </div>
+254	            <form id="category-form" class="modal-form">
+255	                <div class="form-group">
+256	                    <label for="category-name">Nome:</label>
+257	                    <input type="text" id="category-name" required>
+258	                </div>
+259	                
+260	                <div class="form-group">
+261	                    <label for="category-type">Tipo:</label>
+262	                    <select id="category-type" required>
+263	                        <option value="">Selecione o tipo</option>
+264	                        <option value="income">Receita</option>
+265	                        <option value="expense">Despesa</option>
+266	                    </select>
+267	                </div>
+268	                
+269	                <div class="modal-actions">
+270	                    <button type="button" class="btn btn-secondary" id="cancel-category">Cancelar</button>
+271	                    <button type="submit" class="btn btn-primary">Salvar</button>
+272	                </div>
+273	            </form>
+274	        </div>
+275	    </div>
+276	
+277	    <!-- Loading overlay -->
+278	    <div id="loading" class="loading">
+279	        <div class="loading-spinner"></div>
+280	        <p>Carregando...</p>
+281	    </div>
+282	
+283	    <!-- Scripts -->
+284	    <script src="chart-utils.js"></script>
+285	    <script src="app.js"></script>
+286	</body>
+287	</html>
